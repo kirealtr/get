@@ -57,4 +57,6 @@ try:
 finally:
     GPIO.output(dac, GPIO.LOW)
     GPIO.cleanup(dac)
+    GPIO.output(leds, GPIO.LOW)
+    GPIO.cleanup(leds)
     print('GPIO cleanup completed')
