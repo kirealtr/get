@@ -53,7 +53,7 @@ try:
     start = time.time()
     val = 0
     GPIO.output(troy, GPIO.HIGH)
-
+    print('Начало зарядки')
     while val<240:
         val = adc()
         #print(val)
@@ -61,12 +61,12 @@ try:
         data_list.append(val)
     
     GPIO.output(troy, GPIO.LOW)
-
+    print('Конец зарядки, начало разрядки')
     while val>4:
         val = adc()
         dec2leds(val)
         data_list.append(val)
-
+    print('Конец разрядки')
     stop = time.time()
     dur = stop - start
     plt.plot(data_list)
