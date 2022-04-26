@@ -47,7 +47,6 @@ GPIO.setup(leds, GPIO.OUT)
 GPIO.setup(comp, GPIO.IN)
 GPIO.setup(troy, GPIO.OUT)
 
-GPIO.output(troy, GPIO.HIGH)
 
 try:
     data_list = []
@@ -57,7 +56,7 @@ try:
 
     while val<240:
         val = adc()
-        print(val)
+        #print(val)
         dec2leds(val)
         data_list.append(val)
     
@@ -79,9 +78,9 @@ try:
         data.write('\n'.join(data_str))
     
     with open('settings.txt', 'w') as s:
-        s.write('Продолжительность эксперимента: {}'.format(str(dur)))
-        s.write('Средняя частота дискретизации: {}'.format(str(freq)))
-        s.write('Шаг квантования: {}'.format(str(step)))
+        s.write('Продолжительность эксперимента: {}\n'.format(str(dur)))
+        s.write('Средняя частота дискретизации: {}\n'.format(str(freq)))
+        s.write('Шаг квантования: {}\n'.format(str(step)))
 
     print('Продолжительность эксперимента: {}'.format(str(dur)))
     print('Период измерения: {}'.format(str(1 / freq)))
