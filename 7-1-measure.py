@@ -71,18 +71,22 @@ try:
     stop = time.time()
     dur = stop - start
     plt.plot(data_list)
-    freq = len(data_list)/dur
+    freq = len(data_list) / dur
+    step = 3.3 / levels
 
     data_str = list(map(str, data_list))
     with open('data.txt', 'w') as data:
         data.write('\n'.join(data_str))
     
     with open('settings.txt', 'w') as s:
-        s.write(str(dur))
-        s.write(str(freq))
-        
+        s.write('Продолжительность эксперимента: {}'.format(str(dur)))
+        s.write('Средняя частота дискретизации: {}'.format(str(freq)))
+        s.write('Шаг квантования: {}'.format(str(step)))
 
-    print(dur)
+    print('Продолжительность эксперимента: {}'.format(str(dur)))
+    print('Период измерения: {}'.format(str(1 / freq)))
+    print('Средняя частота дискретизации: {}'.format(str(freq)))
+    print('Шаг квантования: {}'.format(str(step)))
     plt.show()
 
 finally:
